@@ -1,0 +1,21 @@
+# Database initialization Dockerfile
+FROM node:lts-alpine
+
+# Install pnpm
+RUN npm install -g pnpm
+
+# Set working directory
+WORKDIR /app
+
+# Copy package files
+COPY package.json pnpm-lock.yaml ./
+
+# Install dependencies (need drizzle-kit for migrations)
+RUN pnpm install --frozen-lockfile
+
+# Copy database schema and config
+COPY src/db ./src/db
+COPY drizzle.config.ts ./
+
+# Run database initialization
+CMD ["pnpm", "db:push"]
