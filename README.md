@@ -40,6 +40,7 @@ DATABASE_URL=postgres://username:password@host:port/database_name
 ```
 
 **Examples:**
+
 - Local PostgreSQL: `DATABASE_URL=postgres://postgres:postgres@localhost:5432/todos`
 - Docker PostgreSQL: `DATABASE_URL=postgres://postgres:postgres@localhost:5432/todos`
 - Cloud database: `DATABASE_URL=postgres://user:pass@db.example.com:5432/todos`
@@ -187,13 +188,14 @@ This application uses environment variables for configuration. All environment v
 
 ### Required Environment Variables
 
-| Variable | Description | Example |
-|----------|-------------|---------|
+| Variable       | Description                  | Example                                             |
+| -------------- | ---------------------------- | --------------------------------------------------- |
 | `DATABASE_URL` | PostgreSQL connection string | `postgres://postgres:postgres@localhost:5432/todos` |
 
 ### Environment Variable Format
 
 The `DATABASE_URL` follows this format:
+
 ```
 postgres://[username]:[password]@[host]:[port]/[database_name]
 ```
@@ -201,16 +203,19 @@ postgres://[username]:[password]@[host]:[port]/[database_name]
 ### Environment Setup Examples
 
 **Local Development:**
+
 ```bash
 DATABASE_URL=postgres://postgres:postgres@localhost:5432/todos
 ```
 
 **Docker PostgreSQL:**
+
 ```bash
 DATABASE_URL=postgres://postgres:postgres@localhost:5432/todos
 ```
 
 **Production (example with cloud database):**
+
 ```bash
 DATABASE_URL=postgres://myuser:mypassword@db.example.com:5432/todos_production
 ```
@@ -294,6 +299,7 @@ pnpm db:studio
 ```
 
 5. **Before deployment:**
+
 ```bash
 pnpm build
 pnpm start  # to test the build
@@ -306,21 +312,24 @@ pnpm start  # to test the build
 If you encounter database connection errors, check the following:
 
 1. **PostgreSQL is running:**
+
    ```bash
    # Check if PostgreSQL is running (macOS/Linux)
    pg_isready -h localhost -p 5432
-   
+
    # Or check running processes
    ps aux | grep postgres
    ```
 
 2. **Environment variables are correct:**
+
    ```bash
    # Check your .env file exists and has correct format
    cat .env
    ```
 
 3. **Database exists:**
+
    ```bash
    # Connect to PostgreSQL and check if database exists
    psql -h localhost -U postgres -l
